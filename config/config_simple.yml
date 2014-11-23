@@ -23,7 +23,7 @@ test:
     loglevel: debug
 
     
-# For the DynameoDB Index extension, do not set the database if the repository_table and version_table
+# For the DynamoDB Index extension, do not set the database if the repository_table and version_table
 # are set. If you set the database then the table names are calculated by appending '-repository' and
 # '-version' to the database. Otherwise, they are used as specified. The database defaults to 'docker-registry'
 #

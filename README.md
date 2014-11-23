@@ -7,6 +7,7 @@ A DynamoDB index for the [docker-registry](https://github.com/docker/docker-regi
 
 - [Quick Start](#quick-start)
 - [Configuration](#configuration)
+- [Manual install](#manual-install)
 - [Implementation Details](#implementation-details)
 
 # Quick start
@@ -32,13 +33,13 @@ extensions:
         secret_access_key: _env:DYNAMODB_SECRET_ACCESS_KEY
 ```
 
-If you do not specify a repository table, then the table name will be formed by adding '-repository' to the end of the database name. If you do not specify a version table, then '-version' is added to the database name. Note that there is no concept of a database in DynamoDB, the database name here is simply used as a prefix for calculating the table names when no table names are specified in the configuration.
+If you do not specify a `repository_table`, then the table name will be formed by adding `-repository` to the end of the `database` name. If you do not specify a `version_table`, then `-version` is added to the `database` name. Note that there is no concept of a database in DynamoDB, the `database` name here is simply used as a prefix for calculating the table names when no table names are specified in the configuration.
 
-The region will default to the s3_region, which in turn defaults to 'us-east-1'.
+The `region` will default to the `s3_region`, which in turn defaults to 'us-east-1'.
 
-The access_key and secret_access_key default to the s3_access_key and s3_secret_access_key respectively. If not specified then you must configure these by other means. This code uses [boto Python interface to Amazon Web Services](https://github.com/boto/boto) to access the DynamoDB. Therefore, you can use a boto configuration file in your home directory, or in /etc. For details see the [boto configuration](http://docs.pythonboto.org/en/latest/) documentation.
+The `access_key` and `secret_access_key` default to the value of the `s3_access_key` and `s3_secret_access_key` respectively. If not specified then you must configure these by other means. This code uses [boto Python interface to Amazon Web Services](https://github.com/boto/boto) to access the DynamoDB. Therefore, you can use a boto configuration file in your home directory, or in /etc. For details see the [boto configuration](http://docs.pythonboto.org/en/latest/) documentation.
 
-So if you use the DynamoDB with no configuration specified it will default to using docker-registry-repository as the respository table name, and docker-registry-version as the version table name (which only contains the current database schema version). The region, access_key and secret_access_key will default to the S3 values or whatever is found in boto configuration. But remember, you must still set the search_backend to docker_registry_index.dynamodb.
+So if you use the DynamoDB with no configuration specified it will default to using 'docker-registry-repository' as the `respository_table` name, and 'docker-registry-version' as the `version_table` name. The region, access_key and secret_access_key will default to the S3 values or whatever is found in boto configuration. But remember, you must still set the search_backend to docker_registry_index.dynamodb.
 
 # Manual Install
 
