@@ -169,7 +169,7 @@ class Index(Base):
 
           {'name': name, 'description': description}
         """
-        if search_term is None:
+        if not search_term or len(search_term) == 0:
             logger.info('Index query: full table scan')
             repositories = self._repositoryTable.scan()
         else:
