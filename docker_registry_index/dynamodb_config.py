@@ -37,7 +37,6 @@ def load():
     if region is None:
         _config['extensions.dynamodb_index.region'] = 'us-east-1'
     _get_or_set('extensions.dynamodb_index.access_key', reg_config.s3_access_key, 'DYNAMODB_ACCESS_KEY')
-    _get_or_set('extensions.dynamodb_index.secret_access_key', reg_config.s3_secret_access_key, 'DYNAMODB_SECRET_ACCESS_KEY')
+    _get_or_set('extensions.dynamodb_index.secret_access_key', reg_config.s3_secret_key, 'DYNAMODB_SECRET_ACCESS_KEY')
     
     return _config
-        
