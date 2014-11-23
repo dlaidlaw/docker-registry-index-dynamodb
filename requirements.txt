@@ -1,0 +1,2 @@
+docker-registry-core>=2,<3
+boto>=2.32.0,<3

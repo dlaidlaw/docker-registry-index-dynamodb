@@ -1,0 +1,39 @@
+# All other flavors inherit the `common' config snippet
+common: &common
+    loglevel: info
+    standalone: true
+    search_backend: docker_registry_index.dynamodb
+    storage: s3
+    s3_bucket: skyvault.test.don
+    boto_bucket: skyvault.test.don
+    storage_path: /registry
+    s3_region: us-east-1
+
+
+prod:
+    <<: *common
+    loglevel: warn
+
+dev:
+    <<: *common
+    loglevel: debug
+
+test:
+    <<: *common
+    loglevel: debug
+
+    
+# For the DynameoDB Index extension, do not set the database if the repository_table and version_table
+# are set. If you set the database then the table names are calculated by appending '-repository' and
+# '-version' to the database. Otherwise, they are used as specified. The database defaults to 'docker-registry'
+#
+# The access_key and secret_access_key will default to the ones specified for s3. The region will default
+# to the s3 region or 'us-east-1' if nothing is specified for both.
+#
+#        repository_table: _env:DYNAMODB_REPOSITORY_TABLE
+#        version_table: _env:DYNAMODB_VERSION_TABLE
+#
+extensions:
+    dynamodb_index:
+        database: docker-registry
+        region: us-east-1
