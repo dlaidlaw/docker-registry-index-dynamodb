@@ -5,10 +5,10 @@
 # TO_RUN:         docker run -p 5000:5000 docker-registry-dynamodb
 #
 
-MAINTAINER Don Laidlaw <don@donlaidlaw.ca>
-
 # Latest docker-registry
 FROM registry:latest
+
+MAINTAINER https://github.com/dlaidlaw/docker-registry-index-dynamodb
 
 COPY . /docker-registry-index-dynamodb
 
