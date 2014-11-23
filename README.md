@@ -40,6 +40,18 @@ The access_key and secret_access_key default to the s3_access_key and s3_secret_
 
 So if you use the DynamoDB with no configuration specified it will default to using docker-registry-repository as the respository table name, and docker-registry-version as the version table name (which only contains the current database schema version). The region, access_key and secret_access_key will default to the S3 values or whatever is found in boto configuration. But remember, you must still set the search_backend to docker_registry_index.dynamodb.
 
+# Manual Install
+
+Simply install and run the docker-registry as normal, but first ensure that this python package (docker-registry-index-dynamodb) is installed and set the docker-registry configuration to use it.
+
+* Install docker-registry as normal.
+* Install this python package. 
+** Available at PYPI: `pip install docker-registry-index-dynamodb`
+* Make sure the docker-registry configuration has the `search_backend` set to `docker_registry_index.dynamodb`.
+* Optionaly set other configuration as specified above and in the docker-registry project.
+* Run the docker-registry.
+** Installing the docker-registry also installs a `docker-registry` command.
+
 # Implementation details
 
 ## Startup
