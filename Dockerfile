@@ -16,7 +16,7 @@ COPY . /docker-registry-index-dynamodb
 RUN pip install file:///docker-registry-index-dynamodb#egg=docker-registry-index-dynamodb
 
 ENV DOCKER_REGISTRY_CONFIG /docker-registry/config/config_sample.yml
-ENV SEARCH_BACKEND=docker_registry_index.dynamodb
+ENV SEARCH_BACKEND docker_registry_index.dynamodb
 ENV SETTINGS_FLAVOR dev
 
 EXPOSE 5000
