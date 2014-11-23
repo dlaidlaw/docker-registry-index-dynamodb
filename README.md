@@ -12,7 +12,26 @@ A DynamoDB index for the [docker-registry](https://github.com/docker/docker-regi
 
 # Quick start
 
-TODO - create document a Docker image configured to use this extension.
+The easiest way to run this is to install docker, then run the docker image:
+
+    `docker pull dlaidlaw/docker-registry-index-dynamodb`
+
+Then run the docker image, specifying your settings as environment variables:
+
+```
+docker run -d \
+         -e SEARCH_BACKEND=docker_registry_index.dynamodb \
+         -e SETTINGS_FLAVOR=prod \
+         -e AWS_REGION=us-east-1 \
+         -e AWS_BUCKET=mybucket \
+         -e STORAGE_PATH=/registry \
+         -e AWS_KEY=myawskey \
+         -e AWS_SECRET=myawssecret \
+         -p 5000:5000 \
+         docker_registry_dynamodb
+```
+
+This will pull the image from the docker hub.
 
 # Configuration
 
