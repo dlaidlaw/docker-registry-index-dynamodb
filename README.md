@@ -14,12 +14,11 @@ A DynamoDB index for the [docker-registry](https://github.com/docker/docker-regi
 
 The easiest way to run this is to install docker, then run the docker image:
 
-    `docker pull dlaidlaw/docker-registry-index-dynamodb`
+    docker pull dlaidlaw/docker-registry-index-dynamodb
 
 Then run the docker image, specifying your settings as environment variables:
 
-```
-docker run -d \
+	docker run -d \
          -e SEARCH_BACKEND=docker_registry_index.dynamodb \
          -e SETTINGS_FLAVOR=prod \
          -e AWS_REGION=us-east-1 \
@@ -29,7 +28,6 @@ docker run -d \
          -e AWS_SECRET=myawssecret \
          -p 5000:5000 \
          docker_registry_dynamodb
-```
 
 This will pull the image from the docker hub.
 
@@ -37,20 +35,18 @@ This will pull the image from the docker hub.
 
 See the [docker-registry](https://github.com/docker/docker-registry) project for details on configuring the docker-registry. This project uses the same configuration mechanism, an you may add the configuration to the same configuration file used by docker-registry. The configuration used by this code is stored in the docker-registry config in the extensions section: For example:
 
-```yaml
-common: &common
-    # add the following
-    search_backend: docker_registry_index.dynamodb
-
-extensions:
-    dynamodb_index:
-        database: _env:DYNAMODB_DATABASE:docker-registry
-        repository_table: _env:DYNAMODB_REPOSITORY_TABLE
-        version_table: _env:DYNAMODB_VERSION_TABLE
-        region: _env:DYNAMODB_REGION
-        access_key: _env:DYNAMODB_ACCESS_KEY
-        secret_access_key: _env:DYNAMODB_SECRET_ACCESS_KEY
-```
+	common: &common
+	    # add the following
+	    search_backend: docker_registry_index.dynamodb
+    
+	extensions:
+	    dynamodb_index:
+	        database: _env:DYNAMODB_DATABASE:docker-registry
+	        repository_table: _env:DYNAMODB_REPOSITORY_TABLE
+	        version_table: _env:DYNAMODB_VERSION_TABLE
+	        region: _env:DYNAMODB_REGION
+	        access_key: _env:DYNAMODB_ACCESS_KEY
+	        secret_access_key: _env:DYNAMODB_SECRET_ACCESS_KEY
 
 If you do not specify a `repository_table`, then the table name will be formed by adding `-repository` to the end of the `database` name. If you do not specify a `version_table`, then `-version` is added to the `database` name. Note that there is no concept of a database in DynamoDB, the `database` name here is simply used as a prefix for calculating the table names when no table names are specified in the configuration.
 
