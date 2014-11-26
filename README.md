@@ -62,11 +62,11 @@ Simply install and run the docker-registry as normal, but first ensure that this
 
 * Install docker-registry as normal.
 * Install this python package. 
-** Available at PYPI: `pip install docker-registry-index-dynamodb`
+  * Available at PYPI: `pip install docker-registry-index-dynamodb`
 * Make sure the docker-registry configuration has the `search_backend` set to `docker_registry_index.dynamodb`.
 * Optionaly set other configuration as specified above and in the docker-registry project.
 * Run the docker-registry.
-** Installing the docker-registry also installs a `docker-registry` command.
+  * Installing the docker-registry also installs a `docker-registry` command.
 
 # Implementation details
 
