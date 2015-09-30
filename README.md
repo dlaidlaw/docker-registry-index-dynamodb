@@ -1,6 +1,10 @@
 Docker-Registry-Index-DynamoDB
 ==============================
 
+# Obsolete
+
+Since the release of [Docker Registry 2](https://docs.docker.com/registry/) this code has become obsolete. Please use that registry, or its commercial version.
+
 A DynamoDB index for the [docker-registry](https://github.com/docker/docker-registry). By default, docker-registry stores its index using [sqlalchemy](http://www.sqlalchemy.org/) in a relational database. This project provides a module that allows you to store the index in [Amazon AWS DynamoDB](http://aws.amazon.com/dynamodb/). This is particularly useful if you are using docker-registry's Amazon S3 driver for your Image Store. With DynamoDB you will have a high-availability index to match the high-availability image store.
 
 # Table of Contents
